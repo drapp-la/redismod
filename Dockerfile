@@ -23,7 +23,7 @@ COPY --from=rejson ${LD_LIBRARY_PATH}/*.so ${LD_LIBRARY_PATH}/
 COPY --from=rebloom ${LD_LIBRARY_PATH}/*.so ${LD_LIBRARY_PATH}/
 
 # ENV PYTHONPATH /usr/lib/redis/modules/deps/cpython/Lib
-ENTRYPOINT ["redis-server"]
+ENTRYPOINT ["redis-server", "/etc/redis.conf"]
 CMD ["--loadmodule", "/usr/lib/redis/modules/redisai.so", \
     "--loadmodule", "/usr/lib/redis/modules/redisearch.so", \
     "--loadmodule", "/usr/lib/redis/modules/redisgraph.so", \
@@ -31,5 +31,4 @@ CMD ["--loadmodule", "/usr/lib/redis/modules/redisai.so", \
     "--loadmodule", "/usr/lib/redis/modules/rejson.so", \
     "--loadmodule", "/usr/lib/redis/modules/redisbloom.so", \
     "--loadmodule", "/var/opt/redislabs/lib/modules/redisgears.so", \
-    "PythonHomeDir", "/opt/redislabs/lib/modules/python3", \
-    "--dir", "/data"]
+    "PythonHomeDir", "/opt/redislabs/lib/modules/python3"]
