@@ -5,4 +5,4 @@ services:
   disk:
     name: data
     mountPath: /var/data
-    sizeGB: 4
+    sizeGB: 10
